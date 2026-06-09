@@ -4,7 +4,7 @@
 
 spec:
   destination:
-    server: https://kubernetes.default.svc
+    server: ""  # Override via ArgoCD UI: spec.destination.server
   source:
     repoURL: "https://github.com/indranil-avyka/argocd-example-apps.git"
     targetRevision: HEAD
