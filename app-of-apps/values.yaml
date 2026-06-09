@@ -11,14 +11,8 @@ spec:
 
 applications:
   - name: app1
-    namespace: default
-    project: default
     path: charts/app1
   - name: app2
-    namespace: default
-    project: default
     path: charts/app2
   - name: helm-guestbook
-    namespace: default
-    project: default
     path: helm-guestbook

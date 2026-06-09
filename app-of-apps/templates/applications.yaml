@@ -17,7 +17,7 @@ spec:
         - values.yaml
   destination:
     server: {{ $.Values.spec.destination.server }}
-    namespace: {{ .namespace | default "default" }}
+    namespace: {{ .namespace | default $.Release.Namespace }}
   syncPolicy:
     automated:
       prune: true
