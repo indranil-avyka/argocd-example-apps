@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: gcr.io/heptio-images/ks-guestbook-demo
+  repository: gcr.io/google-samples/gb-frontend
   pullPolicy: IfNotPresent
-  tag: "0.2"
+  tag: v5
 
 service:
   type: ClusterIP
