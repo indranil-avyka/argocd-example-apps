@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ .name }}
-  namespace: {{ $.Release.Namespace }}
+  namespace: {{ $.Values.argocdNamespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
@@ -17,7 +17,7 @@ spec:
         - values.yaml
   destination:
     server: {{ $.Values.spec.destination.server }}
-    namespace: {{ .namespace | default $.Release.Namespace }}
+    namespace: {{ .namespace | default $.Values.destinationNamespace }}
   syncPolicy:
     automated:
       prune: true
