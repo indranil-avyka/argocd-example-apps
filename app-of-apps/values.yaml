@@ -21,7 +21,10 @@ spec:
 applications:
   - name: app1
     path: charts/app1
+    helm: true       
   - name: app2
     path: charts/app2
+    helm: true       
   - name: helm-guestbook
     path: helm-guestbook
+    helm: true        
