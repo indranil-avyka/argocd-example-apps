@@ -1,19 +1,9 @@
-# Default values for app-of-apps.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-# Namespace where ArgoCD is installed. Application CRs MUST live here.
 argocdNamespace: argocd
-
-# Namespace where child app workloads (Deployments, Services) will be deployed.
-# Override via ArgoCD UI: destinationNamespace
 destinationNamespace: default
-
 spec:
   destination:
-    # https://kubernetes.default.svc is the ArgoCD in-cluster reference.
-    # It automatically resolves to the cluster ArgoCD is running on — no manual IP needed.
-    server: https://kubernetes.default.svc
+    name: {{ $.Values.spec.destination.name }}
+    namespace: {{ .namespace | default $.Values.destinationNamespace }}
   source:
     repoURL: "https://github.com/indranil-avyka/argocd-example-apps.git"
     targetRevision: HEAD
