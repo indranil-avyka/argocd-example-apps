@@ -2,8 +2,7 @@ argocdNamespace: argocd
 destinationNamespace: default
 spec:
   destination:
-    name: {{ $.Values.spec.destination.name }}
-    namespace: {{ .namespace | default $.Values.destinationNamespace }}
+    name: "target-cluster"
   source:
     repoURL: "https://github.com/indranil-avyka/argocd-example-apps.git"
     targetRevision: HEAD
