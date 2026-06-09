@@ -9,17 +9,18 @@ This repository contains a Proof of Concept (POC) demonstrating the **App of App
 │   ├── Chart.yaml
 │   ├── values.yaml   # Defines the child apps to be managed
 │   └── templates/    # Templates ArgoCD Application Custom Resources
-└── charts/           # The child application Helm charts
-    ├── app1/         # Nginx Deployment
-    └── app2/         # HTTPD Deployment
+├── charts/           # The child application Helm charts
+│   ├── app1/         # Nginx Deployment
+│   └── app2/         # HTTPD Deployment
+└── helm-guestbook/   # Guestbook Deployment
 ```
 
 ## How it works
 
 1. The `app-of-apps` is a single Helm chart deployed into ArgoCD.
-2. The `app-of-apps/values.yaml` file acts as the single source of truth for the cluster, listing out the individual applications (`app1`, `app2`, etc.) that should be deployed.
+2. The `app-of-apps/values.yaml` file acts as the single source of truth for the cluster, listing out the individual applications (`app1`, `app2`, `helm-guestbook`) that should be deployed.
 3. ArgoCD continuously syncs the `app-of-apps` chart, which in turn generates `Application` Custom Resources for each defined child app.
-4. ArgoCD then spins up and manages `app1` and `app2` automatically based on those newly generated CRs.
+4. ArgoCD then spins up and manages `app1`, `app2`, and `helm-guestbook` automatically based on those newly generated CRs.
 
 ## Deployment Instructions
 
@@ -37,7 +38,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR-ORG/YOUR-REPO.git # <-- Update this!
+    repoURL: https://github.com/indranil-avyka/argocd-example-apps.git
     targetRevision: HEAD
     path: app-of-apps
     helm:
