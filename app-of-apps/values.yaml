@@ -1,0 +1,24 @@
+# Default values for app-of-apps.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: "https://github.com/indranil-avyka/argocd-example-apps.git"
+    targetRevision: HEAD
+
+applications:
+  - name: app1
+    namespace: default
+    project: default
+    path: charts/app1
+  - name: app2
+    namespace: default
+    project: default
+    path: charts/app2
+  - name: helm-guestbook
+    namespace: default
+    project: default
+    path: helm-guestbook
